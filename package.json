@@ -1,0 +1,19 @@
+{
+  "name": "pokequizbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1",
+    "firebase": "^9.8.2",
+    "mongoose": "^6.3.5",
+    "wokcommands": "^1.5.3"
+  }
+}
