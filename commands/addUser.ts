@@ -1,6 +1,8 @@
 import { ICommand } from "wokcommands";
+import DiscordJS, { GuildMember } from 'discord.js'
 import { collection, doc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+import { client } from '../index'
 
 export default {
     category: "Spieler",
@@ -21,6 +23,12 @@ export default {
     callback: async({ interaction, args })=>{
         const name = args[0]
         const points = parseInt(args[1]) || 0
+        let image
+
+        const users = client.users.cache.find(user=> user.username == name)
+        if(users != undefined){
+            image=users.avatar
+        }
 
         await setDoc(doc(db, "players", name), {name: `${name}`, value: `${points}`})
 
@@ -28,7 +36,7 @@ export default {
            interaction.reply({
                 content: `${name} wurde ${ points != undefined ? `mit ${points} Punkten hinzugefügt` : "hinzugefügt"}`,
             })
-              .then(()=>setTimeout(()=>interaction.deleteReply(),100))
+              .then(()=>setTimeout(()=>interaction.deleteReply(),2000))
         }
     }
 } as ICommand

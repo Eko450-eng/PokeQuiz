@@ -1,8 +1,7 @@
 import { ButtonInteraction, MessageActionRow, MessageButton } from "discord.js";
-import { deleteDoc, doc } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore";
 import { ICommand } from "wokcommands";
 import { db } from "../firebase";
-import playerSchema from '../playersSchema'
 
 export default {
     category: "Spieler",
@@ -21,42 +20,56 @@ export default {
 
 
     callback: async({ interaction, args, channel })=>{
-        const name = args[0]
+      const name = args[0]
 
-        const confirmation = new MessageActionRow()
-              .addComponents(
-                  new MessageButton()
-                      .setCustomId('delete')
-                      .setLabel('Löschen')
-                      .setStyle('DANGER'),
-                  new MessageButton()
-                      .setCustomId('keep')
-                      .setLabel('Neee doch nicht')
-                      .setStyle('SUCCESS'),
-              )
-
-        await interaction.reply({
-            content:`${name} wirklich löschen?`,
-            components: [confirmation],
+      if(name == "alle"){
+        const q = query(collection(db, "players"))
+        const unsub2 = onSnapshot(q, (qs)=>{
+          qs.forEach(async(q)=>{
+            await deleteDoc(doc(db, "players", `${q.data().name}`))
+          })
         })
-
-        const collector = channel.createMessageComponentCollector({
-            max: 1,
+        interaction.reply({
+            content: `Alle gelöscht`,
         })
+          .then(()=>setTimeout(()=>interaction.deleteReply(),2000))
+        return
+      }
 
-        collector.on('collect', (i: ButtonInteraction)=>{})
+      const confirmation = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('delete')
+                    .setLabel('Löschen')
+                    .setStyle('DANGER'),
+                new MessageButton()
+                    .setCustomId('keep')
+                    .setLabel('Neee doch nicht')
+                    .setStyle('SUCCESS'),
+            )
 
-        collector.on('end', async (collection)=>{
-            collection.forEach(async(c)=>{
-                if(c.customId != 'delete') return
-                await deleteDoc(doc(db, "users", `${name}`))
-            })
+      await interaction.reply({
+          content:`${name} wirklich löschen?`,
+          components: [confirmation],
+      })
 
-            await interaction.editReply({
-                content: `Aktion getätigt`,
-                components: []
-            })
-              .then(()=>setTimeout(()=>interaction.deleteReply(),100))
-        })
+      const collector = channel.createMessageComponentCollector({
+          max: 1,
+      })
+
+      collector.on('collect', (i: ButtonInteraction)=>{})
+
+      collector.on('end', async (collection)=>{
+          collection.forEach(async(c)=>{
+            if(c.customId != 'delete') return
+            await deleteDoc(doc(db, "players", `${name}`))
+          })
+
+          await interaction.editReply({
+              content: `Aktion getätigt`,
+              components: []
+          })
+            .then(()=>setTimeout(()=>interaction.deleteReply(),2000))
+      })
     }
 } as ICommand

@@ -91,7 +91,7 @@ export default {
                 content: `Aktion getätigt`,
                 components: []
             })
-              .then(()=>setTimeout(()=>interaction.deleteReply(),100))
+              .then(()=>setTimeout(()=>interaction.deleteReply(),2000))
 
         })
     }
