@@ -56,7 +56,7 @@ export default {
           .setTitle('Leaderboard')
           .setColor('#c4c4c4')
           .setFields(
-            [{name:"Loading", value: "Loading"}]
+            [{name:"Loading", value: ""}]
           )
 
     const newMessage = await message.reply({
