@@ -15,4 +15,5 @@ hörauf
  - startet den bot neu und stoppt die live ansicht der punkte (punkten bleiben gespeichert) - schrei 'hörauf'
 eyhauab
  - 'stoppt' den bot (es crashed ihn komplett ist aber so gewollt) - schrei 'eyhauab'
-[[https://discord.com/api/oauth2/authorize?client_id=981132633910165514&permissions=545125825600&scope=bot%20applications.commands]][Invite me]
+
+[[https://discord.com/api/oauth2/authorize?client_id=981132633910165514&permissions=545125825600&scope=bot%20applications.commands][Invite me]]
