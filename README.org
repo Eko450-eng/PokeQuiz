@@ -1,0 +1,18 @@
+* Pokequiz
+
+A private project for displaying and keeping track of points earned in our Pokemone-quiz sessions
+
+** Commands
+Adduser:
+ - lässt dich einen spieler zum spiel hinzufügen - /adduser * punkte
+deleteuser
+ - lässt dich einen spieler vom spiel entfernen - /deleteuser (/alle)*
+points
+ - lässt dich einem spieler punkte geben/entziehen - /points * - öffnet ein 'gui'
+start
+ - wichtig! nur einmal starten - /start - startet das scoreboard welches live punkte anzeigt
+hörauf
+ - startet den bot neu und stoppt die live ansicht der punkte (punkten bleiben gespeichert) - schrei 'hörauf'
+eyhauab
+ - 'stoppt' den bot (es crashed ihn komplett ist aber so gewollt) - schrei 'eyhauab'
+[[https://discord.com/api/oauth2/authorize?client_id=981132633910165514&permissions=545125825600&scope=bot%20applications.commands]][Invite me]
