@@ -1,9 +1,5 @@
-import { ButtonInteraction, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
-import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { MessageEmbed } from "discord.js";
 import { ICommand } from "wokcommands";
-import { db } from "../firebase";
-import { client } from '../index'
-
 
 export default {
     category: "Hilfe",
@@ -20,34 +16,34 @@ export default {
           .setColor('#c4c4c4')
           .setFields([
             {
-              name:"addUser",
+              name:"adduser",
               inline: true,
-              value:"Lässt dich einen Spieler zum Spiel hinzufügen - /addUser name* punkte"
+              value:"lässt dich einen spieler zum spiel hinzufügen - /adduser name* punkte"
             },
             {
-              name:"deleteUser",
+              name:"deleteuser",
               inline: true,
-              value:"Lässt dich einen Spieler vom Spiel entfernen - /deleteUser (name/alle)*"
+              value:"lässt dich einen spieler vom spiel entfernen - /deleteuser (name/alle)*"
             },
             {
               name:"points",
               inline: true,
-              value:"Lässt dich einem Spieler Punkte geben/entziehen - /points name* - öffnet ein 'GUI'"
+              value:"lässt dich einem spieler punkte geben/entziehen - /points name* - öffnet ein 'gui'"
             },
             {
               name:"start",
               inline: true,
-              value:"WICHTIG! NUR EINMAL STARTEN - /start - Startet das scoreboard welches LIVE punkte anzeigt"
+              value:"wichtig! nur einmal starten - /start - startet das scoreboard welches live punkte anzeigt"
             },
             {
-              name:"HÖRAUF",
+              name:"hörauf",
               inline: true,
-              value:"Startet den Bot neu und stoppt die Live ansicht der Punkte (Punkten bleiben gespeichert) - schrei 'HÖRAUF'"
+              value:"startet den bot neu und stoppt die live ansicht der punkte (punkten bleiben gespeichert) - schrei 'hörauf'"
             },
             {
-              name:"EYHAUAB",
+              name:"eyhauab",
               inline: true,
-              value:"'Stoppt' den Bot (Es crashed ihn komplett ist aber so gewollt) - schrei 'EYHAUAB'"
+              value:"'stoppt' den bot (es crashed ihn komplett ist aber so gewollt) - schrei 'eyhauab'"
             },
           ])
 

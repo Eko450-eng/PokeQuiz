@@ -1,6 +1,5 @@
 import { ICommand } from "wokcommands";
-import DiscordJS, { GuildMember } from 'discord.js'
-import { collection, doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { client } from '../index'
 
@@ -10,6 +9,7 @@ export default {
 
     slash: true,
     testOnly: false,
+    permissions: [ 'SPIELLEITER' ],
 
     expectedArgs: "<Name> <Punkte>",
     minArgs: 1,
