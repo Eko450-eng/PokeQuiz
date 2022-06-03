@@ -9,7 +9,7 @@ export default {
 
     slash: true,
     testOnly: false,
-    permissions: [ 'SPIELLEITER' ],
+    permissions: ['Spielleiter'],
 
     expectedArgs: "<Name>",
     minArgs: 1,
